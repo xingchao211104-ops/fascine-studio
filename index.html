@@ -6,7 +6,96 @@
 <title>Fascine Studio — Interior Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-<style>
+/* === PROJECT SLIDER === */
+.project-slider {
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+  cursor: none;
+  grid-row: span 2;
+}
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slider-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  object-fit: cover;
+  display: block;
+}
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(250,248,245,0.15);
+  border: 1px solid rgba(250,248,245,0.3);
+  color: var(--warm-white);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 20px;
+  transition: background 0.3s;
+  backdrop-filter: blur(4px);
+}
+.slider-btn:hover { background: rgba(250,248,245,0.35); }
+.slider-btn.prev { left: 16px; }
+.slider-btn.next { right: 16px; }
+.slider-dots {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+.slider-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(250,248,245,0.4);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  padding: 0;
+}
+.slider-dot.active {
+  background: rgba(250,248,245,0.9);
+  transform: scale(1.4);
+}
+.slider-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 28px;
+  background: linear-gradient(to top, rgba(26,24,20,0.6), transparent);
+  color: var(--warm-white);
+}
+.slider-info h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.slider-info p {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+  
+  <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -701,6 +790,26 @@
   }
 </style>
 </head>
+
+  // Slider
+let slideIndex = 0;
+const track = document.getElementById('sliderTrack');
+const dots = document.querySelectorAll('.slider-dot');
+function updateSlider() {
+  if (!track) return;
+  track.style.transform = `translateX(-${slideIndex * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === slideIndex));
+}
+function slideMove(dir) {
+  slideIndex = (slideIndex + dir + 4) % 4;
+  updateSlider();
+}
+function slideTo(i) {
+  slideIndex = i;
+  updateSlider();
+}
+// Auto play
+setInterval(() => slideMove(1), 4000);
 <body>
 
 <!-- Custom cursor -->
@@ -900,8 +1009,35 @@
     </div>
     <div class="footer-social">
       <a href="https://www.instagram.com/fascine1227" target="_blank">@fascine.studio</a>
+   <!-- 日式溫潤宅 輪播 -->
+<div class="project-slider" id="mainSlider">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slider-slide">
+      <img src="3廚房-5.jpg" alt="日式溫潤宅 廚房">
     </div>
-    <div>
+    <div class="slider-slide">
+      <img src="4主臥室-8.jpg" alt="日式溫潤宅 主臥室">
+    </div>
+    <div class="slider-slide">
+      <img src="5浴室-3.jpg" alt="日式溫潤宅 浴室">
+    </div>
+    <div class="slider-slide">
+      <img src="6陽台-6.jpg" alt="日式溫潤宅 陽台">
+    </div>
+  </div>
+  <button class="slider-btn prev" onclick="slideMove(-1)">&#8592;</button>
+  <button class="slider-btn next" onclick="slideMove(1)">&#8594;</button>
+  <div class="slider-dots">
+    <button class="slider-dot active" onclick="slideTo(0)"></button>
+    <button class="slider-dot" onclick="slideTo(1)"></button>
+    <button class="slider-dot" onclick="slideTo(2)"></button>
+    <button class="slider-dot" onclick="slideTo(3)"></button>
+  </div>
+  <div class="slider-info">
+    <h3>日式溫潤宅</h3>
+    <p>Residential · 2024</p>
+  </div>
+</div>
       <p>© 2025 Fascine Studio</p>
     </div>
   </div>
