@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日式溫潤宅 — Fascine Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --cream:#f5f2ed; --warm-white:#faf8f5; --ink:#1a1814; --stone:#9a9488; --stone-light:#c8c3bb; --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',sans-serif; }
+  body { background:var(--warm-white); color:var(--ink); font-family:var(--sans); font-weight:300; overflow-x:hidden; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 48px; display:flex; align-items:center; justify-content:space-between; background:rgba(250,248,245,.93); backdrop-filter:blur(8px); border-bottom:1px solid var(--stone-light); }
+  .nav-logo { font-family:var(--serif); font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); text-decoration:none; }
+  .nav-back { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); text-decoration:none; display:flex; align-items:center; gap:8px; transition:color .3s,gap .3s; }
+  .nav-back::before { content:'←'; }
+  .nav-back:hover { color:var(--ink); gap:14px; }
+
+  .hero { height:70vh; position:relative; overflow:hidden; margin-top:69px; display:flex; align-items:flex-end; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,24,20,.55) 0%,transparent 60%); }
+  .hero-content { position:relative; z-index:2; padding:0 48px 48px; }
+  .hero-content h1 { font-family:var(--serif); font-size:clamp(40px,6vw,80px); font-weight:300; color:var(--warm-white); letter-spacing:-.01em; margin-bottom:8px; }
+  .meta { display:flex; gap:24px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:rgba(250,248,245,.65); }
+
+  .info-bar { display:grid; grid-template-columns:repeat(4,1fr); max-width:1400px; margin:0 auto; padding:0 48px; border-bottom:1px solid var(--stone-light); }
+  .info-item { padding:28px 0; border-right:1px solid var(--stone-light); padding-right:28px; margin-right:28px; }
+  .info-item:last-child { border-right:none; }
+  .info-label { font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--stone); margin-bottom:6px; }
+  .info-value { font-family:var(--serif); font-size:18px; font-weight:400; }
+
+  .gallery-section { max-width:1400px; margin:0 auto; padding:56px 48px 120px; }
+  .gallery-intro { margin-bottom:40px; }
+  .gallery-intro h2 { font-family:var(--serif); font-size:30px; font-weight:300; margin-bottom:10px; }
+  .gallery-intro p { font-size:14px; line-height:1.9; color:var(--stone); max-width:540px; }
+
+  .gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+  .gallery-item { position:relative; overflow:hidden; cursor:pointer; aspect-ratio:4/3; background:var(--cream); }
+  .gallery-item:first-child { grid-column:span 2; aspect-ratio:16/9; }
+  .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s cubic-bezier(.16,1,.3,1); }
+  .gallery-item:hover img { transform:scale(1.05); }
+  .overlay { position:absolute; inset:0; background:rgba(26,24,20,0); display:flex; align-items:center; justify-content:center; transition:background .3s; }
+  .gallery-item:hover .overlay { background:rgba(26,24,20,.25); }
+  .overlay span { color:var(--warm-white); font-size:11px; letter-spacing:.25em; text-transform:uppercase; opacity:0; transition:opacity .3s; }
+  .gallery-item:hover .overlay span { opacity:1; }
+
+  /* LIGHTBOX */
+  .lb { display:none; position:fixed; inset:0; z-index:999; background:rgba(26,24,20,.96); align-items:center; justify-content:center; }
+  .lb.on { display:flex; }
+  .lb-img { max-width:88vw; max-height:85vh; object-fit:contain; transition:opacity .25s; }
+  .lb-close { position:absolute; top:24px; right:32px; background:none; border:none; color:rgba(250,248,245,.6); font-size:28px; cursor:pointer; line-height:1; transition:color .2s; }
+  .lb-close:hover { color:#fff; }
+  .lb-btn { position:absolute; top:50%; transform:translateY(-50%); background:rgba(250,248,245,.12); border:1px solid rgba(250,248,245,.25); color:#fff; width:50px; height:50px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; transition:background .3s; backdrop-filter:blur(4px); }
+  .lb-btn:hover { background:rgba(250,248,245,.28); }
+  .lb-prev { left:24px; } .lb-next { right:24px; }
+  .lb-caption { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); color:rgba(250,248,245,.5); font-size:11px; letter-spacing:.2em; text-transform:uppercase; white-space:nowrap; }
+  .lb-dots { position:absolute; bottom:56px; left:50%; transform:translateX(-50%); display:flex; gap:8px; }
+  .lb-dot { width:5px; height:5px; border-radius:50%; background:rgba(250,248,245,.3); border:none; cursor:pointer; padding:0; transition:background .3s,transform .3s; }
+  .lb-dot.on { background:rgba(250,248,245,.9); transform:scale(1.4); }
+
+  footer { background:var(--ink); padding:36px 48px; color:var(--stone); display:flex; justify-content:space-between; align-items:center; }
+  .footer-logo { font-family:var(--serif); font-size:22px; font-weight:300; letter-spacing:.1em; color:var(--cream); text-transform:uppercase; }
+
+  @media (max-width:768px) {
+    nav { padding:18px 24px; }
+    .hero { height:50vh; }
+    .hero-content { padding:0 24px 32px; }
+    .info-bar { grid-template-columns:1fr 1fr; padding:0 24px; }
+    .info-item:nth-child(2) { border-right:none; }
+    .info-item:nth-child(3) { border-top:1px solid var(--stone-light); }
+    .gallery-section { padding:40px 16px 80px; }
+    .gallery-grid { grid-template-columns:1fr 1fr; }
+    .gallery-item:first-child { grid-column:span 2; aspect-ratio:16/9; }
+    footer { flex-direction:column; gap:12px; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fascine</a>
+  <a href="index.html" class="nav-back">回到首頁</a>
+</nav>
+
+<div class="hero">
+  <img src="images.gitkeep.jpg" alt="日式溫潤宅">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>日式溫潤宅</h1>
+    <div class="meta"><span>Residential</span><span>2024</span><span>台北市</span></div>
+  </div>
+</div>
+
+<div class="info-bar">
+  <div class="info-item"><p class="info-label">類型</p><p class="info-value">住宅設計</p></div>
+  <div class="info-item"><p class="info-label">風格</p><p class="info-value">日式溫潤</p></div>
+  <div class="info-item"><p class="info-label">年份</p><p class="info-value">2024</p></div>
+  <div class="info-item"><p class="info-label">地點</p><p class="info-value">台北市</p></div>
+</div>
+
+<div class="gallery-section">
+  <div class="gallery-intro">
+    <h2>空間記錄</h2>
+    <p>點擊任一張照片可放大瀏覽，並左右切換查看其他照片。</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="images.gitkeep.jpg" alt="全室空間" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="2餐廳-8.jpg" alt="餐廳" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="3廚房-5.jpg" alt="廚房" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="3廚房-6.jpg" alt="廚房細節" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="4主臥室-12.jpg" alt="主臥室" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="4主臥室-8.jpg" alt="主臥室" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="6陽台-6.jpg" alt="陽台" loading="lazy">
+      <div class="overlay"><span>查看</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="lb" id="lb" onclick="outsideClose(event)">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-btn lb-prev" onclick="lbMove(-1)">←</button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" onclick="lbMove(1)">→</button>
+  <div class="lb-dots" id="lbDots"></div>
+  <div class="lb-caption" id="lbCap"></div>
+</div>
+
+<footer>
+  <div class="footer-logo">Fascine</div>
+  <p style="font-size:11px;letter-spacing:.1em">© 2024 Fascine Studio</p>
+</footer>
+
+<script>
+const photos = [
+  { src: 'images.gitkeep.jpg', caption: '全室空間' },
+    { src: '2餐廳-8.jpg', caption: '餐廳' },
+    { src: '3廚房-5.jpg', caption: '廚房' },
+    { src: '3廚房-6.jpg', caption: '廚房細節' },
+    { src: '4主臥室-12.jpg', caption: '主臥室' },
+    { src: '4主臥室-8.jpg', caption: '主臥室' },
+    { src: '6陽台-6.jpg', caption: '陽台' }
+];
+let cur = 0;
+
+const dotsEl = document.getElementById('lbDots');
+photos.forEach((_,i) => {
+  const d = document.createElement('button');
+  d.className = 'lb-dot' + (i===0?' on':'');
+  d.onclick = e => { e.stopPropagation(); goTo(i); };
+  dotsEl.appendChild(d);
+});
+
+function openLightbox(i) {
+  cur = i; document.getElementById('lb').classList.add('on');
+  document.body.style.overflow = 'hidden'; update();
+}
+function closeLb() { document.getElementById('lb').classList.remove('on'); document.body.style.overflow = ''; }
+function outsideClose(e) { if (e.target === document.getElementById('lb')) closeLb(); }
+function update() {
+  const img = document.getElementById('lbImg');
+  img.style.opacity = 0;
+  setTimeout(() => { img.src = photos[cur].src; img.style.opacity = 1; }, 150);
+  document.getElementById('lbCap').textContent = photos[cur].caption;
+  document.querySelectorAll('.lb-dot').forEach((d,i) => d.classList.toggle('on', i===cur));
+}
+function lbMove(dir) { cur = (cur+dir+photos.length)%photos.length; update(); }
+function goTo(i) { cur=i; update(); }
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lb').classList.contains('on')) return;
+  if (e.key==='ArrowLeft') lbMove(-1);
+  if (e.key==='ArrowRight') lbMove(1);
+  if (e.key==='Escape') closeLb();
+});
+let tx=0;
+const lb = document.getElementById('lb');
+lb.addEventListener('touchstart', e => { tx=e.touches[0].clientX; });
+lb.addEventListener('touchend', e => { const d=tx-e.changedTouches[0].clientX; if(Math.abs(d)>50) lbMove(d>0?1:-1); });
+</script>
+</body>
+</html>
