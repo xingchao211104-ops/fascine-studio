@@ -3,7 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fascine Studio — Interior Design</title>
+<title>FASCINÉ 著迷設計｜台北室內設計工作室</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="FASCINÉ 著迷設計，台北室內設計工作室。專注住宅設計、商業空間規劃與軟裝整合，以材質、光線與比例打造屬於你的理想空間。">
+<meta name="keywords" content="台北室內設計,室內設計,住宅設計,商業空間,軟裝設計,台北裝潢,室內設計師,著迷設計,Fascine Studio">
+<meta name="author" content="FASCINÉ 著迷設計">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://fascine1227.com/">
+
+<!-- Google Search Console 驗證 -->
+<meta name="google-site-verification" content="cd855bf5df735c95">
+
+<!-- Open Graph（Facebook / LINE 分享預覽） -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fascine1227.com/">
+<meta property="og:title" content="FASCINÉ 著迷設計｜台北室內設計工作室">
+<meta property="og:description" content="專注住宅設計、商業空間規劃與軟裝整合，以材質、光線與比例打造屬於你的理想空間。">
+<meta property="og:image" content="https://fascine1227.com/S__44359806_0.jpg">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="FASCINÉ 著迷設計">
+
+<!-- Twitter / X 分享預覽 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FASCINÉ 著迷設計｜台北室內設計工作室">
+<meta name="twitter:description" content="專注住宅設計、商業空間規劃與軟裝整合，以材質、光線與比例打造屬於你的理想空間。">
+<meta name="twitter:image" content="https://fascine1227.com/S__44359806_0.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
@@ -85,13 +110,6 @@
   .service-title { font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.25; margin-bottom: 16px; letter-spacing: -.01em; }
   .service-desc { font-size: 13px; line-height: 1.8; color: var(--stone); }
 
-  /* PRESS */
-  .press { padding: 60px 48px; border-top: 1px solid var(--stone-light); border-bottom: 1px solid var(--stone-light); display: flex; align-items: center; overflow: hidden; }
-  .press-label { font-size: 10px; letter-spacing: .35em; text-transform: uppercase; color: var(--stone-light); white-space: nowrap; padding-right: 48px; border-right: 1px solid var(--stone-light); margin-right: 48px; }
-  .press-items { display: flex; gap: 48px; align-items: center; flex: 1; }
-  .press-item { font-family: var(--serif); font-size: 18px; font-weight: 400; font-style: italic; color: var(--stone-light); letter-spacing: .03em; white-space: nowrap; transition: color .3s; }
-  .press-item:hover { color: var(--ink); }
-
   /* CONTACT */
   .contact { padding: 120px 48px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-heading { font-family: var(--serif); font-size: clamp(42px,5vw,72px); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; }
@@ -117,6 +135,15 @@
   .footer-address { line-height: 1.7; }
   .footer-social a { color: var(--stone); text-decoration: none; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid rgba(154,148,136,.3); padding-bottom: 2px; transition: color .3s, border-color .3s; }
   .footer-social a:hover { color: var(--cream); border-color: var(--cream); }
+
+  /* CAROUSEL */
+  .carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .carousel-track { display: flex; width: 100%; height: 100%; transition: transform .7s cubic-bezier(.16,1,.3,1); }
+  .carousel-track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.16,1,.3,1); }
+  .project-card:hover .carousel-track img { transform: scale(1.04); }
+  .carousel-dots { position: absolute; bottom: 56px; left: 28px; display: flex; gap: 6px; z-index: 3; }
+  .carousel-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(250,248,245,.4); border: none; padding: 0; cursor: none; transition: background .3s, transform .3s; }
+  .carousel-dot.active { background: rgba(250,248,245,.95); transform: scale(1.4); }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
@@ -162,14 +189,14 @@
 <!-- HERO — 首頁第一張大圖 -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="images.gitkeep.jpg" alt="Fascine Studio">
+    <img src="S__44359806_0.jpg" alt="Fascine Studio">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">Fascine<br><em>Studio</em></h1>
     <div class="hero-sub">
-      <p>Interior Design</p>
-      <p>Taipei, Taiwan</p>
+      <p>台北室內設計工作室</p>
+      <p>住宅 · 商業空間 · 軟裝整合</p>
     </div>
   </div>
 </section>
@@ -179,7 +206,7 @@
   <div class="intro-text fade-in">
     <p class="section-eyebrow">Studio Profile</p>
     <h2 class="intro-heading">Design that<br><em>breathes</em></h2>
-    <p class="intro-body">我們相信每個空間都有其獨特的靈魂。透過細膩的材質選擇與光線運用，將生活美學融入日常，創造令人心動的居家環境。</p>
+    <p class="intro-body">每個空間都有屬於它的性格。我們從材質、光線與比例入手，將你的生活方式轉譯為可感受的場域——不只是好看，而是真正適合你的家。</p>
   </div>
   <!-- 右欄照片 -->
   <div class="intro-image fade-in delay-2">
@@ -197,40 +224,56 @@
   <div class="project-grid">
 
     <!-- 相冊 1：日式溫潤宅（7張，左欄大圖） -->
-    <a href="album1.html" class="project-card">
-      <img src="2餐廳-8 (1).jpg" alt="日式溫潤宅">
-      <img src="3廚房-5 (1).jpg" alt="日式溫潤宅">
-      <img src="3廚房-6 (1).jpg" alt="日式溫潤宅">
-      <img src="4主臥室-12 (1).jpg" alt="日式溫潤宅">
-      <img src="4主臥室-8 (1).jpg" alt="日式溫潤宅">
-      <img src="6陽台-6 (1).jpg" alt="日式溫潤宅">
+    <a href="album1.html" class="project-card" data-carousel="0">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="4主臥室-12.jpg" alt="日式溫潤宅">
+          <img src="4主臥室-8.jpg" alt="日式溫潤宅">
+          <img src="6陽台-6.jpg" alt="日式溫潤宅">
+          <img src="3廚房-5.jpg" alt="日式溫潤宅">
+          <img src="3廚房-6.jpg" alt="日式溫潤宅">
+          <img src="2餐廳-8.jpg" alt="日式溫潤宅">
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
       <div class="project-info">
         <h3>日式溫潤宅</h3>
         <p>Residential · 2024</p>
       </div>
     </a>
 
-    <!-- 相冊 2：輕工業風宅（右上） -->
-    <a href="album2.html" class="project-card fade-in delay-1">
-      <img src="435751432_1037552141710195_4421982573352072774_n (1).jpg" alt="輕工業風宅">
-      <img src="435885910_1037552145043528_2355191030422921197_n (1).jpg" alt="輕工業風宅">
-      <img src="435894612_1037552191710190_2364523649312000839_n (1).jpg" alt="輕工業風宅">
+    <!-- 相冊 2：第二個案子（右上） -->
+    <a href="album2.html" class="project-card fade-in delay-1" data-carousel="1">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="435751432_1037552141710195_4421982573352072774_n.jpg" alt="輕工業風宅">
+          <img src="435880799_1037552181710191_617800396786831716_n.jpg" alt="輕工業風宅">
+          <img src="435885910_1037552145043528_2355191030422921197_n.jpg" alt="輕工業風宅">
+          <img src="435894612_1037552191710190_2364523649312000839_n.jpg" alt="輕工業風宅">
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
       <div class="project-info">
         <h3>輕工業風宅</h3>
         <p>Residential · 2024</p>
       </div>
     </a>
 
-    <!-- 相冊 3：科技風商業空間（右下） -->
-    <a href="album3.html" class="project-card fade-in delay-2">
-      <img src="S__44359802_0 (1).jpg" alt="科技風商業空">
-      <img src="S__44359803_0 (1).jpg" alt="科技風商業空">
-      <img src="S__44359805_0 (1).jpg" alt="科技風商業空">
-      <img src="S__44359806_0 (1).jpg" alt="科技風商業空">
-      <img src="S__44359807_0 (1).jpg" alt="科技風商業空">      
+    <!-- 相冊 3：第三個案子（右下） -->
+    <a href="album3.html" class="project-card fade-in delay-2" data-carousel="2">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="S__44359803_0.jpg" alt="科技風髮廊">
+          <img src="S__44359805_0.jpg" alt="科技風髮廊">
+          <img src="S__44359806_0.jpg" alt="科技風髮廊">
+          <img src="S__44359807_0.jpg" alt="科技風髮廊">
+          <img src="S__44359802_0.jpg" alt="科技風髮廊">
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
       <div class="project-info">
-        <h3>科技風商業空間</h3>
-        <p>Residential · 2025</p>
+        <h3>科技風髮廊</h3>
+        <p>Commercial · 2023</p>
       </div>
     </a>
 
@@ -265,17 +308,6 @@
   </div>
 </section>
 
-<!-- PRESS -->
-<div class="press">
-  <span class="press-label">As Seen In</span>
-  <div class="press-items">
-    <span class="press-item">La Vie</span>
-    <span class="press-item">漂亮家居</span>
-    <span class="press-item">Room</span>
-    <span class="press-item">住宅美學</span>
-  </div>
-</div>
-
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="fade-in">
@@ -290,6 +322,7 @@
     </div>
     <div class="form-field"><label>訊息</label><textarea placeholder="請描述您的需求..."></textarea></div>
     <div class="form-submit"><button type="submit" class="btn-submit">Send Message</button></div>
+    <p style="margin-top:16px; font-size:12px; color:var(--stone); text-align:right; line-height:1.7;">我們將於 2 個工作天內以電子郵件回覆，<br>並安排免費初次諮詢（30 分鐘）。</p>
   </form>
 </section>
 
@@ -310,7 +343,68 @@
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InteriorDesigner",
+  "name": "FASCINÉ 著迷設計",
+  "alternateName": "Fascine Studio",
+  "url": "https://fascine1227.com",
+  "email": "fascine@fascine1227.com",
+  "image": "https://fascine1227.com/S__44359806_0.jpg",
+  "description": "台北室內設計工作室，專注住宅設計、商業空間規劃與軟裝整合。",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "台北市",
+    "addressCountry": "TW"
+  },
+  "sameAs": ["https://www.instagram.com/fascine1227/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "設計服務",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "室內設計" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "空間規劃" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "軟裝搭配" } }
+    ]
+  }
+}
+</script>
+
 <script>
+  // CAROUSEL INIT
+  document.querySelectorAll('.project-card[data-carousel]').forEach(card => {
+    const track = card.querySelector('.carousel-track');
+    const imgs = track.querySelectorAll('img');
+    const dotsEl = card.querySelector('.carousel-dots');
+    let current = 0;
+    let timer;
+
+    // build dots
+    imgs.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', e => { e.preventDefault(); goTo(i); });
+      dotsEl.appendChild(dot);
+    });
+
+    function goTo(n) {
+      current = (n + imgs.length) % imgs.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === current));
+    }
+
+    function next() { goTo(current + 1); }
+
+    function start() { timer = setInterval(next, 3500); }
+    function stop()  { clearInterval(timer); }
+
+    card.addEventListener('mouseenter', stop);
+    card.addEventListener('mouseleave', start);
+    start();
+  });
+
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   document.addEventListener('mousemove', e => {
