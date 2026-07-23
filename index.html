@@ -7,10 +7,13 @@
 
 <!-- SEO Meta Tags -->
 <meta name="description" content="FASCINÉ 著迷設計，台北室內設計工作室。專注住宅設計、商業空間規劃與軟裝整合，以材質、光線與比例打造屬於你的理想空間。">
-<meta name="keywords" content="台北室內設計,室內設計,住宅設計,商業空間,軟裝設計,台北裝潢,室內設計師,著迷設計,Fascine Studio">
+<meta name="keywords" content="台北室內設計,室內設計師,住宅設計,商業空間設計,軟裝整合,台北裝潢,裝潢設計,空間規劃,著迷設計,Fascine Studio,台北設計師,室內裝潢推薦,日式風格,輕工業風,科技風空間">
 <meta name="author" content="FASCINÉ 著迷設計">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="TW-TPE">
+<meta name="geo.placename" content="台北市">
 <link rel="canonical" href="https://fascine1227.com/">
+<link rel="sitemap" type="application/xml" href="https://fascine1227.com/sitemap.xml">
 
 <!-- Google Search Console 驗證 -->
 <meta name="google-site-verification" content="cd855bf5df735c95">
@@ -110,6 +113,35 @@
   .service-title { font-family: var(--serif); font-size: 26px; font-weight: 400; line-height: 1.25; margin-bottom: 16px; letter-spacing: -.01em; }
   .service-desc { font-size: 13px; line-height: 1.8; color: var(--stone); }
 
+  /* WORKFLOW */
+  .workflow { background: var(--ink); padding-bottom: 64px; }
+  .workflow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(250,248,245,.08); margin-top: 32px; }
+  .workflow-step { background: var(--ink); padding: 32px 36px; }
+  .workflow-step:nth-child(4), .workflow-step:nth-child(5) { grid-column: span 1; }
+  .workflow-step:nth-child(4) { grid-column: 1 / span 1; }
+  .workflow-num { font-family: var(--serif); font-size: 13px; font-weight: 300; color: var(--gold); letter-spacing: .15em; display: block; margin-bottom: 12px; }
+  .workflow-step h3 { font-family: var(--serif); font-size: 19px; font-weight: 400; color: var(--warm-white); margin-bottom: 8px; line-height: 1.25; }
+  .workflow-step p { font-size: 12px; line-height: 1.7; color: rgba(250,248,245,.4); }
+
+  /* JOURNAL */
+  .journal { padding: 120px 48px; max-width: 1400px; margin: 0 auto; }
+  .journal-title { font-family: var(--serif); font-size: clamp(36px,4vw,56px); font-weight: 300; line-height: 1.15; letter-spacing: -.01em; margin-top: 16px; margin-bottom: 56px; }
+  .journal-title em { font-style: italic; }
+  .journal-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2px; }
+  .journal-card { display: block; text-decoration: none; color: var(--ink); background: var(--cream); padding: 48px; transition: background .3s; }
+  .journal-card:hover { background: #ede9e3; }
+  .journal-card--more { display: flex; flex-direction: column; justify-content: flex-end; background: var(--ink); color: var(--warm-white); }
+  .journal-card--more:hover { background: #2a2822; }
+  .journal-card-meta { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
+  .journal-tag { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--stone); border: 1px solid var(--stone-light); padding: 4px 10px; }
+  .journal-date { font-size: 11px; color: var(--stone); }
+  .journal-card h3 { font-family: var(--serif); font-size: clamp(22px,2vw,30px); font-weight: 400; line-height: 1.35; margin-bottom: 16px; letter-spacing: -.01em; }
+  .journal-card p { font-size: 13px; line-height: 1.85; color: var(--stone); margin-bottom: 32px; }
+  .journal-card--more p { color: rgba(250,248,245,.5); }
+  .journal-read { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); }
+  .journal-card--more .journal-read { color: var(--gold); }
+  .journal-more-label { font-family: var(--serif); font-size: 32px; font-style: italic; font-weight: 300; color: var(--warm-white); margin-bottom: 16px; }
+
   /* CONTACT */
   .contact { padding: 120px 48px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-heading { font-family: var(--serif); font-size: clamp(42px,5vw,72px); font-weight: 300; line-height: 1.05; letter-spacing: -.02em; }
@@ -168,6 +200,8 @@
     .contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
     .footer-top { flex-direction: column; gap: 32px; }
     .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .workflow-steps { grid-template-columns: 1fr; } .workflow-step { padding: 24px; }
+    .journal { padding: 80px 24px; } .journal-grid { grid-template-columns: 1fr; } .journal-card { padding: 32px; }
     .press { padding: 40px 24px; } .press-items { gap: 24px; }
     .philosophy { padding: 80px 24px; }
   }
@@ -183,7 +217,9 @@
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#workflow">Process</a></li>
     <li><a href="#about">Profile</a></li>
+    <li><a href="blog.html">Journal</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -191,7 +227,7 @@
 <!-- HERO — 首頁第一張大圖 -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="1客廳-2.jpg" alt="Fascine Studio">
+    <img src="S__44359806_0.jpg" alt="Fascine Studio">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -219,8 +255,7 @@
 <!-- PROJECTS -->
 <section class="projects" id="projects">
   <div class="projects-header fade-in">
-    <h2>Selected Works</h2>
-    <a href="#" class="view-all">View All</a>
+    <a href="works.html" class="view-all">View All Works →</a>
   </div>
 
   <div class="project-grid">
@@ -275,7 +310,7 @@
       </div>
       <div class="project-info">
         <h3>科技風髮廊</h3>
-        <p>Commercial · 2025</p>
+        <p>Commercial · 2023</p>
       </div>
     </a>
 
@@ -310,13 +345,64 @@
   </div>
 </section>
 
+<!-- HOW WE WORK -->
+<section class="workflow" id="workflow">
+  <p class="section-eyebrow fade-in" style="padding: 64px 48px 0;">Process</p>
+  <div class="workflow-steps fade-in delay-1">
+    <div class="workflow-step">
+      <span class="workflow-num">01</span>
+      <div><h3>免費初步諮詢</h3><p>了解需求・現場勘察・說明合作方式</p></div>
+    </div>
+    <div class="workflow-step">
+      <span class="workflow-num">02</span>
+      <div><h3>確認方向・簽約</h3><p>設計方向・預算框架・正式委託</p></div>
+    </div>
+    <div class="workflow-step">
+      <span class="workflow-num">03</span>
+      <div><h3>設計發展・材料確認</h3><p>平面配置・施工圖・材料選樣</p></div>
+    </div>
+    <div class="workflow-step">
+      <span class="workflow-num">04</span>
+      <div><h3>施工監管</h3><p>工班協調・現場確認・品質把關</p></div>
+    </div>
+    <div class="workflow-step">
+      <span class="workflow-num">05</span>
+      <div><h3>完工驗收・軟裝收尾</h3><p>驗收・軟裝佈置・一年保固</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL PREVIEW -->
+<section class="journal" id="journal">
+  <div class="journal-header fade-in">
+    <p class="section-eyebrow">Journal</p>
+    <h2 class="journal-title">設計知識<br><em>一篇讀懂</em></h2>
+  </div>
+  <div class="journal-grid fade-in delay-1">
+    <a href="article-renovation.html" class="journal-card">
+      <div class="journal-card-meta">
+        <span class="journal-tag">裝潢流程</span>
+        <span class="journal-date">2024</span>
+      </div>
+      <h3>新家裝潢全攻略：從簽約到完工，每個階段你需要知道的事</h3>
+      <p>第一次裝潢不知道從哪裡開始？這篇文章帶你走過每一個階段，了解時間、費用與注意事項。</p>
+      <span class="journal-read">閱讀全文 →</span>
+    </a>
+    <a href="blog.html" class="journal-card journal-card--more">
+      <span class="journal-more-label">更多文章</span>
+      <p>收費方式、材質選擇、設計風格比較⋯⋯</p>
+      <span class="journal-read">前往文章頁 →</span>
+    </a>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="fade-in">
     <p class="section-eyebrow">Get In Touch</p>
     <h2 class="contact-heading">讓我們<br>共同<br><em>創造</em></h2>
   </div>
-  <form class="contact-form fade-in delay-1">
+  <form class="contact-form fade-in delay-1" action="https://formspree.io/f/mzdnakya" method="POST">
     <div class="form-field"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
     <div class="form-field"><label>電子郵件</label><input type="email" placeholder="your@email.com"></div>
     <div class="form-field"><label>專案類型</label>
@@ -348,28 +434,97 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "InteriorDesigner",
-  "name": "FASCINÉ 著迷設計",
-  "alternateName": "Fascine Studio",
-  "url": "https://fascine1227.com",
-  "email": "fascine@fascine1227.com",
-  "image": "https://fascine1227.com/S__44359806_0.jpg",
-  "description": "台北室內設計工作室，專注住宅設計、商業空間規劃與軟裝整合。",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "台北市",
-    "addressCountry": "TW"
-  },
-  "sameAs": ["https://www.instagram.com/fascine1227/"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "設計服務",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "室內設計" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "空間規劃" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "軟裝搭配" } }
-    ]
-  }
+  "@graph": [
+    {
+      "@type": "InteriorDesigner",
+      "@id": "https://fascine1227.com/#business",
+      "name": "FASCINÉ 著迷設計",
+      "alternateName": ["Fascine Studio", "著迷設計", "fascine1227"],
+      "description": "台北室內設計工作室，專注住宅設計、商業空間規劃與軟裝整合。以材質、光線與比例為核心，打造兼具美感與生活機能的空間。",
+      "url": "https://fascine1227.com",
+      "logo": "https://fascine1227.com/S__44359806_0.jpg",
+      "image": [
+        "https://fascine1227.com/S__44359806_0.jpg",
+        "https://fascine1227.com/4主臥室-12.jpg",
+        "https://fascine1227.com/S__44359803_0.jpg"
+      ],
+      "email": "fascine@fascine1227.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "台北市",
+        "addressRegion": "台灣",
+        "addressCountry": "TW"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "台北市" },
+        { "@type": "City", "name": "新北市" },
+        { "@type": "City", "name": "桃園市" }
+      ],
+      "serviceType": ["室內設計", "住宅設計", "商業空間設計", "軟裝整合", "空間規劃", "施工監管"],
+      "sameAs": ["https://www.instagram.com/fascine1227/"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "設計服務項目",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "全案室內設計", "description": "從需求確認到完工交屋的全程設計與監工服務" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "空間顧問諮詢", "description": "專業第二意見，協助平面配置、材質搭配與燈光規劃" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "軟裝整合", "description": "傢具、燈飾、布料、植栽的整體搭配與佈置執行" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://fascine1227.com/#website",
+      "url": "https://fascine1227.com",
+      "name": "FASCINÉ 著迷設計",
+      "publisher": { "@id": "https://fascine1227.com/#business" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "FASCINÉ 著迷設計提供哪些服務？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FASCINÉ 著迷設計提供三種服務：全案室內設計（從需求確認到完工交屋）、空間顧問諮詢（專業第二意見與材質建議）、以及軟裝整合（傢具、燈飾與佈置執行）。服務範圍涵蓋台北市、新北市與桃園市。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "台北室內設計費用怎麼算？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "室內設計費用通常依坪數計算，包含設計費與施工費。實際費用因空間坪數、風格選擇與材料等級而有所不同。FASCINÉ 著迷設計提供免費初步諮詢，可在會面後提供初步報價。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "裝潢流程需要多久時間？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "從初次諮詢到完工入住，一般住宅裝潢約需 4 至 6 個月。設計發展階段約 4–8 週，施工階段依坪數與工程複雜度約需 8–16 週，軟裝收尾約 1–2 週。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何與 FASCINÉ 著迷設計開始合作？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "透過網站聯絡表單或 Instagram @fascine1227 傳訊，我們將於 2 個工作天內回覆，並安排免費初次諮詢（30 分鐘）。諮詢無需費用，無任何合作義務。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "FASCINÉ 著迷設計的風格是什麼？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FASCINÉ 著迷設計不侷限於單一風格，而是從每位屋主的生活方式出發，以材質、光線與比例為核心語彙，打造兼具美感與機能的空間。過去作品涵蓋日式溫潤宅、輕工業風住宅、科技風商業空間等不同類型。"
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
