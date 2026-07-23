@@ -402,17 +402,58 @@
     <p class="section-eyebrow">Get In Touch</p>
     <h2 class="contact-heading">讓我們<br>共同<br><em>創造</em></h2>
   </div>
-  <form class="contact-form fade-in delay-1" action="https://formspree.io/f/mzdnakya" method="POST">
-    <div class="form-field"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
-    <div class="form-field"><label>電子郵件</label><input type="email" placeholder="your@email.com"></div>
+  <form class="contact-form fade-in delay-1" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+    <input type="hidden" name="access_key" value="81d98bb0-d576-4534-9263-78781de96eaa">
+    <input type="hidden" name="subject" value="FASCINÉ 著迷設計｜新客戶來信">
+    <input type="hidden" name="from_name" value="FASCINÉ 網站表單">
+    <input type="hidden" name="redirect" value="false">
+    <div class="form-field"><label>姓名</label><input type="text" name="name" placeholder="您的姓名" required></div>
+    <div class="form-field"><label>電子郵件</label><input type="email" name="email" placeholder="your@email.com" required></div>
+    <div class="form-field"><label>聯絡電話</label><input type="tel" name="phone" placeholder="0912-345-678"></div>
     <div class="form-field"><label>專案類型</label>
-      <select><option value="">請選擇</option><option>住宅設計</option><option>商業空間</option><option>軟裝諮詢</option></select>
+      <select name="type"><option value="">請選擇</option><option>住宅設計</option><option>商業空間</option><option>軟裝諮詢</option><option>空間顧問</option></select>
     </div>
-    <div class="form-field"><label>訊息</label><textarea placeholder="請描述您的需求..."></textarea></div>
-    <div class="form-submit"><button type="submit" class="btn-submit">Send Message</button></div>
+    <div class="form-field"><label>預算範圍</label>
+      <select name="budget"><option value="">請選擇</option><option>100 萬以下</option><option>100–200 萬</option><option>200–400 萬</option><option>400 萬以上</option></select>
+    </div>
+    <div class="form-field"><label>需求說明</label><textarea name="message" placeholder="請描述您的空間條件與需求..."></textarea></div>
+    <div class="form-submit"><button type="submit" class="btn-submit" id="submitBtn">Send Message</button></div>
+    <p id="formMsg" style="display:none; margin-top:20px; font-size:13px; text-align:right; line-height:1.8;"></p>
     <p style="margin-top:16px; font-size:12px; color:var(--stone); text-align:right; line-height:1.7;">我們將於 2 個工作天內以電子郵件回覆，<br>並安排免費初次諮詢（30 分鐘）。</p>
   </form>
 </section>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(this)
+      });
+      const data = await res.json();
+      if (data.success) {
+        msg.style.display = 'block';
+        msg.style.color = 'var(--stone)';
+        msg.textContent = '感謝您的來信，我們將於 2 個工作天內與您聯繫。';
+        this.reset();
+        btn.textContent = 'Sent ✓';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      msg.style.display = 'block';
+      msg.style.color = '#c0392b';
+      msg.textContent = '送出失敗，請直接來信 fascine@fascine1227.com';
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    }
+  });
+</script>
 
 <!-- FOOTER -->
 <footer>
